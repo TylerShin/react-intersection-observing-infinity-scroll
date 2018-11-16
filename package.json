@@ -26,12 +26,15 @@
   },
   "homepage": "https://github.com/TylorShin/react-blazing-infinity-scroll#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "react-dom": "^16.6.3",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "@types/react": "^16.7.6",
     "@types/react-dom": "^16.0.9",
+    "@types/request": "^2.48.1",
     "css-loader": "^1.0.1",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.10.0",

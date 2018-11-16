@@ -3,6 +3,7 @@ import React from "react";
 interface InfiniteScrollProps {
   hasMore: boolean;
   isLoading: boolean;
+  loadMoreFunc: Function;
   parentElement?: Element;
   loaderComponent?: React.ReactNode;
   thresholdHeight?: number;
@@ -19,7 +20,7 @@ class InfiniteScroll extends React.PureComponent<InfiniteScrollProps> {
       entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            this.loadItem();
+            this.loadItems();
           }
         });
       },
@@ -30,8 +31,6 @@ class InfiniteScroll extends React.PureComponent<InfiniteScrollProps> {
 
     this.intersectionObserver.observe(this.thresholdNode);
   }
-
-  public componentWillUnmount() {}
 
   public render() {
     const { thresholdHeight } = this.props;
@@ -51,14 +50,14 @@ class InfiniteScroll extends React.PureComponent<InfiniteScrollProps> {
     );
   }
 
-  private loadItem = async () => {
-    const { isLoading } = this.props;
+  private loadItems = () => {
+    const { isLoading, loadMoreFunc } = this.props;
 
     if (isLoading) {
       return;
     }
 
-    console.log("HIT LOAD");
+    loadMoreFunc();
   };
 }
 
