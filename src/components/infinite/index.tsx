@@ -1,4 +1,5 @@
 import React from "react";
+import "intersection-observer";
 
 interface InfiniteScrollProps {
   hasMore: boolean;
@@ -33,22 +34,38 @@ class InfiniteScroll extends React.PureComponent<InfiniteScrollProps> {
   }
 
   public render() {
-    const { thresholdHeight } = this.props;
-
     return (
       <div>
         {this.props.children}
-        <div
-          ref={el => (this.thresholdNode = el!)}
-          style={{
-            height: thresholdHeight || 250,
-            // TODO: REMOVE BELOW. IT'S FOR TEST ONLY
-            backgroundColor: "red"
-          }}
-        />
+        {this.getThresholdNode()}
       </div>
     );
   }
+
+  private getThresholdNode = () => {
+    const { hasMore, thresholdHeight, loaderComponent } = this.props;
+
+    if (!hasMore) {
+      return null;
+    }
+
+    if (loaderComponent) {
+      return (
+        <div ref={el => (this.thresholdNode = el!)}>{loaderComponent}</div>
+      );
+    }
+
+    return (
+      <div
+        ref={el => (this.thresholdNode = el!)}
+        style={{
+          height: thresholdHeight || 250,
+          // TODO: REMOVE BELOW. IT'S FOR TEST ONLY
+          backgroundColor: "red"
+        }}
+      />
+    );
+  };
 
   private loadItems = () => {
     const { isLoading, loadMoreFunc } = this.props;

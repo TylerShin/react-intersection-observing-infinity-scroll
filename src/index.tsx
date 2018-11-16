@@ -29,13 +29,32 @@ class Example extends React.Component<{}, ExampleState> {
   public render() {
     const { commits, isLoading } = this.state;
 
-    console.log(this.state.page);
-
     const commitList = commits.map(commit => {
       return (
-        <div key={commit.sha}>
-          <img width={200} height={200} src={commit.author.avatar_url} />
-          <span>{commit.author.name}</span>
+        <div
+          key={commit.sha}
+          style={{
+            width: 700,
+            margin: "0 auto 30px auto",
+            border: "1px solid #efefef",
+            borderRadius: "5px",
+            padding: 8
+          }}
+        >
+          <img
+            style={{
+              display: "inline-block",
+              verticalAlign: "top",
+              margin: "0 8px 16px 0",
+              borderRadius: "5px"
+            }}
+            width={50}
+            height={50}
+            src={commit.author.avatar_url}
+          />
+          <strong style={{ display: "inline-block", verticalAlign: "top" }}>
+            {commit.commit.author.name}
+          </strong>
           <div>{commit.commit.message}</div>
         </div>
       );
@@ -47,6 +66,9 @@ class Example extends React.Component<{}, ExampleState> {
           loadMoreFunc={this.fetchCommits}
           hasMore={true}
           isLoading={isLoading}
+          loaderComponent={
+            <div style={{ height: "300px" }}>is loading.......</div>
+          }
         >
           {commitList}
         </InfiniteScroll>
@@ -80,7 +102,6 @@ class Example extends React.Component<{}, ExampleState> {
 
 const RootElement = (
   <div>
-    <div>HELLO</div>
     <Example />
   </div>
 );
