@@ -7,7 +7,8 @@ interface InfiniteScrollProps {
   loadMoreFunc: Function;
   parentElement?: Element;
   loaderComponent?: React.ReactNode;
-  thresholdHeight?: number;
+  loaderHeight?: number;
+  thresholdMargin?: string;
 }
 
 class InfiniteScroll extends React.PureComponent<InfiniteScrollProps> {
@@ -15,7 +16,7 @@ class InfiniteScroll extends React.PureComponent<InfiniteScrollProps> {
   private intersectionObserver: IntersectionObserver;
 
   public componentDidMount() {
-    const { parentElement } = this.props;
+    const { parentElement, thresholdMargin } = this.props;
 
     this.intersectionObserver = new IntersectionObserver(
       entries => {
@@ -26,7 +27,8 @@ class InfiniteScroll extends React.PureComponent<InfiniteScrollProps> {
         });
       },
       {
-        root: parentElement
+        root: parentElement || null,
+        rootMargin: thresholdMargin || "0px"
       }
     );
 
@@ -43,7 +45,7 @@ class InfiniteScroll extends React.PureComponent<InfiniteScrollProps> {
   }
 
   private getThresholdNode = () => {
-    const { hasMore, thresholdHeight, loaderComponent } = this.props;
+    const { hasMore, loaderHeight, loaderComponent } = this.props;
 
     if (!hasMore) {
       return null;
@@ -59,7 +61,7 @@ class InfiniteScroll extends React.PureComponent<InfiniteScrollProps> {
       <div
         ref={el => (this.thresholdNode = el!)}
         style={{
-          height: thresholdHeight || 250,
+          height: loaderHeight || 250,
           // TODO: REMOVE BELOW. IT'S FOR TEST ONLY
           backgroundColor: "red"
         }}
