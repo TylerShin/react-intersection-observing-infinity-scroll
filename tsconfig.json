@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
+    "outDir": "./dst/",
     "sourceMap": true,
     "noImplicitAny": true,
     "allowUnusedLabels": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es2015",
+    "target": "es5",
     "module": "esnext",
     "moduleResolution": "node",
     "jsx": "react",
@@ -15,8 +15,8 @@
     "removeComments": true,
     "experimentalDecorators": true,
     "strictNullChecks": true,
-    "allowJs": true,
-    "typeRoots": ["./node_modules/@types", "./typings"]
+    "typeRoots": ["./node_modules/@types", "./typings"],
+    "declaration": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules/**/*"]

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDom from "react-dom";
 import Axios from "axios";
-import InfiniteScroll from "./components/infinite";
+import InfiniteScroll from "../src/components/infinite";
 
 interface ExampleState {
   page: number;
