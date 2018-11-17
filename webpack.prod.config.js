@@ -1,11 +1,8 @@
 const path = require("path");
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.tsx",
-  mode: "development",
-  devtool: "inline-source-map",
+  mode: "production",
   module: {
     rules: [
       {
@@ -29,19 +26,5 @@ module.exports = {
   output: {
     filename: "index.js",
     path: path.resolve(__dirname, "dst")
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      template: "src/index.ejs",
-      inject: true,
-      NODE_ENV: "development"
-    })
-  ],
-  devServer: {
-    contentBase: path.join(__dirname, "dst"),
-    compress: true,
-    hot: true,
-    port: 9000
   }
 };

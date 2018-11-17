@@ -1,5 +1,5 @@
-import React from "react";
-import ReactDom from "react-dom";
+import * as React from "react";
+import * as ReactDom from "react-dom";
 import Axios from "axios";
 import InfiniteScroll from "../src/components/infinite";
 

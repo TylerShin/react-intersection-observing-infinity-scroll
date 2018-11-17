@@ -1,5 +1,5 @@
 import * as React from "react";
-import "intersection-observer";
+import getIntersectionObserver from "../helpers/getIntesectionObserver";
 
 interface InfiniteScrollProps {
   hasMore: boolean;
@@ -13,26 +13,29 @@ interface InfiniteScrollProps {
 
 class InfiniteScroll extends React.PureComponent<InfiniteScrollProps> {
   private thresholdNode: HTMLDivElement;
-  private intersectionObserver: IntersectionObserver;
+  private intersectionObserver: IntersectionObserver | null;
 
   public componentDidMount() {
     const { parentElement, thresholdMargin } = this.props;
 
-    this.intersectionObserver = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            this.loadItems();
-          }
-        });
-      },
-      {
-        root: parentElement || null,
-        rootMargin: thresholdMargin || "0px"
-      }
-    );
+    const intersectionObserver = getIntersectionObserver();
+    if (intersectionObserver) {
+      this.intersectionObserver = new intersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              this.loadItems();
+            }
+          });
+        },
+        {
+          root: parentElement || null,
+          rootMargin: thresholdMargin || "0px"
+        }
+      );
 
-    this.intersectionObserver.observe(this.thresholdNode);
+      this.intersectionObserver.observe(this.thresholdNode);
+    }
   }
 
   public render() {
