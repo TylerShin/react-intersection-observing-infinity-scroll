@@ -25,6 +25,7 @@ module.exports = {
   },
   output: {
     filename: "index.js",
+    library: "InfiniteScroll",
     path: path.resolve(__dirname, "lib")
   }
 };
