@@ -23,9 +23,11 @@ module.exports = {
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js"]
   },
+  target: "node",
   output: {
     filename: "index.js",
     library: "InfiniteScroll",
+    libraryTarget: "umd",
     path: path.resolve(__dirname, "lib")
   }
 };
