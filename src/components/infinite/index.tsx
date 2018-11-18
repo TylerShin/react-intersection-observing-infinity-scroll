@@ -11,7 +11,7 @@ interface InfiniteScrollProps {
   thresholdMargin?: string;
 }
 
-class InfiniteScroll extends React.PureComponent<InfiniteScrollProps> {
+export class InfiniteScroll extends React.PureComponent<InfiniteScrollProps> {
   private thresholdNode: HTMLDivElement;
   private intersectionObserver: IntersectionObserver | null;
 
@@ -82,5 +82,3 @@ class InfiniteScroll extends React.PureComponent<InfiniteScrollProps> {
     loadMoreFunc();
   };
 }
-
-export default InfiniteScroll;

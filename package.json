@@ -1,6 +1,6 @@
 {
   "name": "react-blazing-infinity-scroll",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "React component that supports infinity scroll aiming blazing speed",
   "main": "dst/index.js",
   "types": "dst/index.d.ts",
@@ -27,6 +27,9 @@
     "url": "https://github.com/TylorShin/react-blazing-infinity-scroll/issues"
   },
   "homepage": "https://github.com/TylorShin/react-blazing-infinity-scroll#readme",
+  "peerDependencies": {
+    "react": "^16.0.0-0"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "intersection-observer": "^0.5.1",
