@@ -25,6 +25,6 @@ module.exports = {
   },
   output: {
     filename: "index.js",
-    path: path.resolve(__dirname, "dst")
+    path: path.resolve(__dirname, "lib")
   }
 };

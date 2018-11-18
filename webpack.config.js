@@ -28,18 +28,18 @@ module.exports = {
   },
   output: {
     filename: "index.js",
-    path: path.resolve(__dirname, "dst")
+    path: path.resolve(__dirname, "lib")
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: "src/index.ejs",
+      template: "lib/index.ejs",
       inject: true,
       NODE_ENV: "development"
     })
   ],
   devServer: {
-    contentBase: path.join(__dirname, "dst"),
+    contentBase: path.join(__dirname, "lib"),
     compress: true,
     hot: true,
     port: 9000

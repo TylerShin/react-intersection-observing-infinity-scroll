@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./dst/",
+    "outDir": "./lib/",
     "sourceMap": true,
     "noImplicitAny": true,
     "allowUnusedLabels": false,

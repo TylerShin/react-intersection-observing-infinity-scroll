@@ -1,12 +1,12 @@
 {
   "name": "react-blazing-infinity-scroll",
-  "version": "1.0.6",
+  "version": "1.0.10",
   "description": "React component that supports infinity scroll aiming blazing speed",
-  "main": "dst/index.js",
-  "types": "dst/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "start:dev": "webpack-dev-server",
-    "build:prod": "rm -rf dst && webpack --config webpack.prod.config.js",
+    "build:prod": "rm -rf lib && webpack --config webpack.prod.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
