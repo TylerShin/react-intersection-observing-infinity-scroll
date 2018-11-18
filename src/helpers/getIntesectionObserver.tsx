@@ -7,6 +7,7 @@ export default function getIntersectionObserver():
   ) {
     // TODO: Optimize polyfill logic
     console.log("REQUIRING POLYFILL FIRED");
+    require("intersection-observer");
     return IntersectionObserver;
   }
   return null;

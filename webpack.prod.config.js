@@ -20,14 +20,15 @@ module.exports = {
       }
     ]
   },
+  externals: ["IntersectionObserver"],
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js"]
   },
-  target: "node",
   output: {
     filename: "index.js",
     library: "InfiniteScroll",
     libraryTarget: "umd",
+    globalObject: "typeof self !== 'undefined' ? self : this",
     path: path.resolve(__dirname, "lib")
   }
 };
