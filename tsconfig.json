@@ -7,7 +7,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "target": "es5",
-    "module": "esnext",
+    "module": "CommonJS",
     "moduleResolution": "node",
     "jsx": "react",
     "lib": ["es6", "dom"],
