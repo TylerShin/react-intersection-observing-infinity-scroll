@@ -1,6 +1,6 @@
 {
   "name": "react-blazing-infinity-scroll",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "React component that supports infinity scroll aiming blazing speed",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
