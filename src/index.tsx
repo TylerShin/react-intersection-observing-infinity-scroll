@@ -79,6 +79,10 @@ class InfiniteScroll extends React.PureComponent<InfiniteScrollProps> {
       return;
     }
 
+    console.log(
+      "=========== ========== ========== ========== ===FIRE LOAD MORE"
+    );
+
     loadMoreFunc();
   };
 }
