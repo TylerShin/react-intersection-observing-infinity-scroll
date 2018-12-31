@@ -1,4 +1,4 @@
-#  react-intersection-observing-infinity-scroll [![GitHub Starts](https://img.shields.io/github/stars/TylorShin/ react-intersection-observing-infinity-scroll.svg)](https://github.com/TylorShin/ react-intersection-observing-infinity-scroll) [![GitHub contributors](https://img.shields.io/github/contributors/TylorShin/ react-intersection-observing-infinity-scroll.svg)](https://github.com/TylorShin/ react-intersection-observing-infinity-scroll/graphs/contributors/) [![Node version](https://img.shields.io/badge/Node-8+-green.svg)](https://nodejs.org/) [![React Version](https://img.shields.io/badge/React-16%2B-green.svg)](https://reactjs.org/)
+# react-intersection-observing-infinity-scroll [![GitHub Starts](https://img.shields.io/github/stars/TylorShin/react-intersection-observing-infinity-scroll.svg)](https://github.com/TylorShin/react-intersection-observing-infinity-scroll) [![GitHub contributors](https://img.shields.io/github/contributors/TylorShin/react-intersection-observing-infinity-scroll.svg)](https://github.com/TylorShin/react-intersection-observing-infinity-scroll/graphs/contributors/) [![Node version](https://img.shields.io/badge/Node-8+-green.svg)](https://nodejs.org/) [![React Version](https://img.shields.io/badge/React-16%2B-green.svg)](https://reactjs.org/)
 
 ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |
@@ -23,16 +23,30 @@ example
 <script src="path/to/intersection-observer.js"></script>
 
 <!-- Load all other JavaScript. -->
-<script src=" react-intersection-observing-infinity-scroll.js"></script>
+<script src="react-intersection-observing-infinity-scroll.js"></script>
 ```
 
 ## How to install
 **IMPORTANT**  
 You should install `intersection Observer` polyfill to support IE & elder browsers.
 ```
-$ npm install -S  react-intersection-observing-infinity-scroll
+$ npm install -S react-intersection-observing-infinity-scroll
 
 ```
+
+## How to use
+```
+<InfiniteScroll
+  loadMoreFunc={loadMore}
+  isLoading={isLoading}
+  hasMore={!isEnd}
+  loaderComponent={<div className="loader">{this.renderLoadingSpinner()}</div>}
+>
+  {/* list content */}
+</InfiniteScroll>
+```
+
+If you want to see detail implementation, visit [example page](https://github.com/TylorShin/react-intersection-observing-infinity-scroll/tree/master/example/index.html) and code.
 
 ## To Do
 
