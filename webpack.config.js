@@ -3,7 +3,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: "./example/example.tsx",
   mode: "production",
   devtool: "inline-source-map",
   module: {
@@ -15,11 +15,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [
-          "style-loader", // creates style nodes from JS strings
-          "css-loader", // translates CSS into CommonJS
-          "sass-loader" // compiles Sass to CSS, using Node Sass by default
-        ]
+        use: ["style-loader", "css-loader", "sass-loader"]
       }
     ]
   },
@@ -33,7 +29,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: "lib/index.ejs",
+      template: "example/index.ejs",
       inject: true,
       NODE_ENV: "development"
     })

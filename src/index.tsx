@@ -1,5 +1,4 @@
 import * as React from "react";
-import getIntersectionObserver from "./helpers/getIntesectionObserver";
 
 interface InfiniteScrollProps {
   hasMore: boolean;
@@ -18,24 +17,21 @@ class InfiniteScroll extends React.PureComponent<InfiniteScrollProps> {
   public componentDidMount() {
     const { parentElement, thresholdMargin } = this.props;
 
-    const intersectionObserver = getIntersectionObserver();
-    if (intersectionObserver) {
-      this.intersectionObserver = new intersectionObserver(
-        entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              this.loadItems();
-            }
-          });
-        },
-        {
-          root: parentElement || null,
-          rootMargin: thresholdMargin || "0px"
-        }
-      );
+    this.intersectionObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            this.loadItems();
+          }
+        });
+      },
+      {
+        root: parentElement || null,
+        rootMargin: thresholdMargin || "0px"
+      }
+    );
 
-      this.intersectionObserver.observe(this.thresholdNode);
-    }
+    this.intersectionObserver.observe(this.thresholdNode);
   }
 
   public render() {
@@ -64,9 +60,7 @@ class InfiniteScroll extends React.PureComponent<InfiniteScrollProps> {
       <div
         ref={el => (this.thresholdNode = el!)}
         style={{
-          height: loaderHeight || 250,
-          // TODO: REMOVE BELOW. IT'S FOR TEST ONLY
-          backgroundColor: "red"
+          height: loaderHeight || 250
         }}
       />
     );
@@ -78,10 +72,6 @@ class InfiniteScroll extends React.PureComponent<InfiniteScrollProps> {
     if (isLoading) {
       return;
     }
-
-    console.log(
-      "=========== ========== ========== ========== ===FIRE LOAD MORE"
-    );
 
     loadMoreFunc();
   };

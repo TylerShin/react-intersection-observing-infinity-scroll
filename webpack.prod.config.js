@@ -20,7 +20,10 @@ module.exports = {
       }
     ]
   },
-  externals: ["IntersectionObserver"],
+  externals: {
+    react: "react",
+    "react-dom": "react-dom"
+  },
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js"]
   },
