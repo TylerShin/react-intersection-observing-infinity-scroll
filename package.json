@@ -1,7 +1,7 @@
 {
-  "name": "react-blazing-infinity-scroll",
-  "version": "1.0.19",
-  "description": "React component that supports infinity scroll aiming blazing speed",
+  "name": "react-intersection-observing-infinity-scroll",
+  "version": "1.0.0",
+  "description": "React component that supports infinity scroll aiming blazing speed by using Intersection Observer API",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
