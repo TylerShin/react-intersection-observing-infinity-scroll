@@ -46,7 +46,7 @@ $ npm install -S react-intersection-observing-infinity-scroll
 </InfiniteScroll>
 ```
 
-If you want to see detail implementation, visit [example page](https://github.com/TylorShin/react-intersection-observing-infinity-scroll/tree/master/example/index.html) and code.
+If you want to see detail implementation, visit [example page](https://tylorshin.github.io/react-intersection-observing-infinity-scroll/example) and code.
 
 ## To Do
 
