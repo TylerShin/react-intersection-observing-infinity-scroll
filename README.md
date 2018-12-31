@@ -4,6 +4,8 @@
 --- | --- | --- | --- | --- |
  ✔ |  ✔ | 9+ ✔ |  ✔ |  ✔ |
 
+[example page](https://tylorshin.github.io/react-intersection-observing-infinity-scroll/example)
+
 React component that supports infinity scroll aiming blazing speed with tiny size (< 10kb without gzip)  
 It supports SSR build and fallback render with `<div>` element.  
 
