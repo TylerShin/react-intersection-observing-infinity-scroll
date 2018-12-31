@@ -6,7 +6,7 @@
 
 [example page](https://tylorshin.github.io/react-intersection-observing-infinity-scroll/example)
 
-React component that supports infinity scroll aiming blazing speed with tiny size (< 10kb without gzip)  
+React component that supports infinity scroll with tiny size (< 3kb without gzip)  
 It supports SSR build and fallback render with `<div>` element.  
 
 This library doesn't use any `eventListener` for scroll event. Rather than eventListener, It uses [Intersection Obeserver API] (https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API). 
