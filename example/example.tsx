@@ -1,5 +1,5 @@
-import * as React from "react";
-import * as ReactDom from "react-dom";
+import React from "react";
+import ReactDom from "react-dom";
 import Axios from "axios";
 import InfiniteScroll from "../src";
 
@@ -86,7 +86,6 @@ class Example extends React.Component<{}, ExampleState> {
   }
 
   private fetchCommits = async (page: number) => {
-    console.log("============FIRED");
     this.setState(prevState => ({ ...prevState, isLoading: true }));
     const res = await Axios(
       "https://api.github.com/repos/pluto-net/scinapse-web-client/commits",
