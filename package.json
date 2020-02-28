@@ -1,6 +1,6 @@
 {
   "name": "react-intersection-observing-infinity-scroll",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React component that supports infinity scroll aiming blazing speed by using Intersection Observer API",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -40,8 +40,6 @@
     "css-loader": "^1.0.1",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.13.1",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "ts-loader": "^5.3.0",

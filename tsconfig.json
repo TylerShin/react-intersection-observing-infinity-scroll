@@ -6,6 +6,8 @@
     "allowUnusedLabels": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",

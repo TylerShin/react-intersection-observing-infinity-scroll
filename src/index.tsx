@@ -1,6 +1,6 @@
-import * as React from "react";
+import React, { FC, useRef, useEffect } from "react";
 
-interface InfiniteScrollProps {
+interface Props {
   hasMore: boolean;
   isLoading: boolean;
   loadMoreFunc: Function;
@@ -10,18 +10,25 @@ interface InfiniteScrollProps {
   thresholdMargin?: string;
 }
 
-class InfiniteScroll extends React.PureComponent<InfiniteScrollProps> {
-  private thresholdNode: HTMLDivElement;
-  private intersectionObserver: IntersectionObserver | null;
+const InfiniteScroll: FC<Props> = ({
+  hasMore,
+  loaderComponent,
+  loaderHeight,
+  isLoading,
+  loadMoreFunc,
+  parentElement,
+  thresholdMargin,
+  children
+}) => {
+  const thresholdNode = useRef<HTMLDivElement>(null);
 
-  public componentDidMount() {
-    const { parentElement, thresholdMargin } = this.props;
-
-    this.intersectionObserver = new IntersectionObserver(
+  useEffect(() => {
+    if (!thresholdNode.current) return;
+    const intersectionObserver = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            this.loadItems();
+          if (entry.isIntersecting && !isLoading) {
+            loadMoreFunc();
           }
         });
       },
@@ -31,50 +38,34 @@ class InfiniteScroll extends React.PureComponent<InfiniteScrollProps> {
       }
     );
 
-    this.intersectionObserver.observe(this.thresholdNode);
+    // caution
+    intersectionObserver.observe(thresholdNode.current);
+    return () => {
+      thresholdNode.current &&
+        intersectionObserver.unobserve(thresholdNode.current);
+    };
+  }, []);
+
+  let content: JSX.Element | null = (
+    <div
+      ref={thresholdNode}
+      style={{
+        height: loaderHeight || 250
+      }}
+    />
+  );
+  if (!hasMore) {
+    content = null;
+  } else if (isLoading && loaderComponent) {
+    content = <div ref={thresholdNode}>{loaderComponent}</div>;
   }
 
-  public render() {
-    return (
-      <div>
-        {this.props.children}
-        {this.getThresholdNode()}
-      </div>
-    );
-  }
-
-  private getThresholdNode = () => {
-    const { hasMore, loaderHeight, loaderComponent } = this.props;
-
-    if (!hasMore) {
-      return null;
-    }
-
-    if (loaderComponent) {
-      return (
-        <div ref={el => (this.thresholdNode = el!)}>{loaderComponent}</div>
-      );
-    }
-
-    return (
-      <div
-        ref={el => (this.thresholdNode = el!)}
-        style={{
-          height: loaderHeight || 250
-        }}
-      />
-    );
-  };
-
-  private loadItems = () => {
-    const { isLoading, loadMoreFunc } = this.props;
-
-    if (isLoading) {
-      return;
-    }
-
-    loadMoreFunc();
-  };
-}
+  return (
+    <div>
+      {children}
+      {content}
+    </div>
+  );
+};
 
 export default InfiniteScroll;
